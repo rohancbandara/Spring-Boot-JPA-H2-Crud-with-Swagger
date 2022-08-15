@@ -1,6 +1,7 @@
 package com.rcb.entity;
 
 
+import com.rcb.constants.CommonStatus;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,4 +25,7 @@ public class Student {
 
     @Column(name = "age")
     private Integer age;
+
+    @Column(name = "status")
+    private CommonStatus status;
 }

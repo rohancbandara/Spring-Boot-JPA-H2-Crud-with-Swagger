@@ -1,6 +1,7 @@
 package com.rcb.dto;
 
 
+import com.rcb.constants.CommonStatus;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,4 +11,5 @@ public class StudentInsertDTO {
     private String firstName;
     private String lastName;
     private String age;
+    private CommonStatus status;
 }
