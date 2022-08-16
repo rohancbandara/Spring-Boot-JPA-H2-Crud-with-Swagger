@@ -125,7 +125,7 @@ public class StudentService {
             if (CommonValidation.stringNullValidation(dto.getId())) {
                 student = new Student();
             } else {
-                student = getStudentById(Long.parseLong(dto.getId()));
+                student = studentRepository.findById(Long.parseLong(dto.getId())).get();
             }
             student = getStudentEntity(student, dto);
             studentRepository.save(student);
@@ -144,8 +144,8 @@ public class StudentService {
      * @param studentId
      * @return
      */
-    public Student getStudentById(Long studentId) {
-        return studentRepository.findById(studentId).get();
+    public StudentResponseDTO getStudentById(String studentId) {
+        return getStudentResponseDTO(studentRepository.findById(Long.valueOf(studentId)).get());
     }
 
     /**

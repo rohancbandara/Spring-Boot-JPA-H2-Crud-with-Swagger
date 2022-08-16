@@ -35,4 +35,9 @@ public class StudentController {
     public CommonResponse deleteStudent(@PathVariable("studentId") String studentId) {
         return studentService.deleteById(studentId);
     }
+
+    @GetMapping("/{studentId}")
+    public StudentResponseDTO getStudentById(@PathVariable("studentId") String studentId) {
+        return studentService.getStudentById(studentId);
+    }
 }
