@@ -30,4 +30,9 @@ public class StudentController {
     public CommonResponse saveUpdateStudent(@RequestBody StudentInsertDTO dto) {
         return studentService.saveUpdateStudent(dto);
     }
+
+    @DeleteMapping("/{studentId}")
+    public CommonResponse deleteStudent(@PathVariable("studentId") String studentId) {
+        return studentService.deleteById(studentId);
+    }
 }

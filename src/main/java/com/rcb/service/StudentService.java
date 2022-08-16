@@ -13,7 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -143,5 +146,30 @@ public class StudentService {
      */
     public Student getStudentById(Long studentId) {
         return studentRepository.findById(studentId).get();
+    }
+
+    /**
+     * ========================================================================
+     * This method is responsible delete student by id.
+     * ========================================================================
+     *
+     * @param studentId
+     * @return
+     */
+    public CommonResponse deleteById(String studentId) {
+        CommonResponse commonResponse = new CommonResponse();
+        try {
+            Optional<Student> student = studentRepository.findById(Long.valueOf(studentId));
+            if (!student.isPresent()) {
+                commonResponse.setErrorMessages(new ArrayList<>(Arrays.asList("Not Found Student related this ID :" + studentId)));
+                commonResponse.setStatus(false);
+                return commonResponse;
+            }
+            studentRepository.delete(student.get());
+            commonResponse.setStatus(true);
+        } catch (Exception e) {
+            LOGGER.warn("/**************** Exception in StudentService -> deleteById()" + e);
+        }
+        return commonResponse;
     }
 }
