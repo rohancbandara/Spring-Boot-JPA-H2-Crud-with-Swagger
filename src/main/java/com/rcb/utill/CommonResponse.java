@@ -1,6 +1,5 @@
 package com.rcb.utill;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
