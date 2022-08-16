@@ -1,11 +1,11 @@
 package com.rcb.controller;
 
+import com.rcb.dto.StudentInsertDTO;
 import com.rcb.dto.StudentResponseDTO;
 import com.rcb.service.StudentService;
+import com.rcb.utill.CommonResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,5 +19,15 @@ public class StudentController {
     @GetMapping("/get-all")
     public List<StudentResponseDTO> getAllStudents() {
         return studentService.getAllStudents();
+    }
+
+    @GetMapping("/get-by-status/{status}")
+    public List<StudentResponseDTO> getStudentsByStaÁtus(@PathVariable("status") String status) {
+        return studentService.getByStatus(status);
+    }
+
+    @PostMapping("/save-update")
+    public CommonResponse saveUpdateStudent(@RequestBody StudentInsertDTO dto) {
+        return studentService.saveUpdateStudent(dto);
     }
 }

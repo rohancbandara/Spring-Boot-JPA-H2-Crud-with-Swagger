@@ -1,5 +1,9 @@
 package com.rcb.utill;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,9 +13,11 @@ import java.util.List;
  * of Controller/Service methods
  * ==============================================================
  **/
+@Getter
+@Setter
 public class CommonResponse {
 
-    private final List<Object> payload = null;
-    private final List<String> errorMessages = new ArrayList<>();
-    private final boolean status = false;
+    private List<Object> payload = null;
+    private List<String> errorMessages = new ArrayList<>();
+    private boolean status = false;
 }
